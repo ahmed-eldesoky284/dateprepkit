@@ -15,68 +15,70 @@ pip install dateprepkit
 To use DataPrepKit in your Python project, follow the steps below:
 
 ```
-from data_prep_kit import DataPrepKit
-import pandas as pd
-
-# Sample data
-data = pd.read_csv('your_data.csv')
-
-# Initialize DataPrepKit object
-data_prep = DataPrepKit(data)
+# Import DataPrepKit
+from DataPrepKit.DataPrepKit import DataPrepKit
+# Initialize DataPrepKit with a DataFrame
+prep_kit = DataPrepKit()
 ```
 1. Reading Data
 Use the read_data method to load data from various file formats such as CSV, Excel, or JSON:
 ```
 # Read data from a CSV file
-data = data_prep.read_data('your_data.csv', format='csv')
+csv_data = prep_kit.read_data('student-dataset.csv', 'csv')
 ```
 
 2. Generating Data Summary
 Generate summary statistics for the loaded data using the data_summary method:
 ```
-# Generate summary statistics
-summary = data_prep.data_summary()
+# Generate a data summary
+summary = prep_kit.data_summary()
+print("Data Summary:")
 print(summary)
 ```
 
 3. Handling Missing Values
 Handle missing values in the DataFrame by either removing or imputing them using the handle_missing_values method:
 ```
-# Handle missing values by removing rows with missing values
-cleaned_data = data_prep.handle_missing_values(strategy='remove')
+# Handle missing values by removing
+cleaned_data = prep_kit.handle_missing_values(strategy='remove')
+print("\nData after handling missing values (removed):")
+print(cleaned_data)
 ```
 
 4. Encoding Categorical Data
 Encode categorical columns in the DataFrame using one-hot encoding with the encode_categorical_data method:
 ```
-# Encode categorical columns
-encoded_data = data_prep.encode_categorical_data(categorical_columns=['category'])
+# Encode categorical data
+encoded_df = prep_kit.encode_categorical_data(categorical_columns=['Gender', 'City'])
+print("\nEncoded DataFrame:")
+print(encoded_df)
 ```
 
 Example
 
 Here's a complete example of how to use DataPrepKit:
 ```
-from data_prep_kit import DataPrepKit
-import pandas as pd
-
-# Sample data
-data = pd.read_csv('your_data.csv')
-
-# Initialize DataPrepKit object
-data_prep = DataPrepKit(data)
+# Import DataPrepKit
+from DataPrepKit.DataPrepKit import DataPrepKit
+# Initialize DataPrepKit with a DataFrame
+prep_kit = DataPrepKit()
 
 # Read data from a CSV file
-data = data_prep.read_data('your_data.csv', format='csv')
+csv_data = prep_kit.read_data('student-dataset.csv', 'csv')
 
-# Generate summary statistics
-summary = data_prep.data_summary()
+# Generate a data summary
+summary = prep_kit.data_summary()
+print("Data Summary:")
 print(summary)
 
-# Handle missing values by removing rows with missing values
-cleaned_data = data_prep.handle_missing_values(strategy='remove')
+# Handle missing values by removing
+cleaned_data = prep_kit.handle_missing_values(strategy='remove')
+print("\nData after handling missing values (removed):")
+print(cleaned_data)
 
-# Encode categorical columns
-encoded_data = data_prep.encode_categorical_data(categorical_columns=['category'])
+# Encode categorical data
+encoded_df = prep_kit.encode_categorical_data(categorical_columns=['Gender', 'City'])
+print("\nEncoded DataFrame:")
+print(encoded_df)
 ```
 
